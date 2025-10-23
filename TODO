@@ -1,0 +1,77 @@
+1. Page d'Accueil (index.html) ✅
+    ● Chiffres clés 2025 en vedette
+    ● Graphique Sankey Recettes → Dépenses
+    ● Résumé exécutif
+    ● Navigation vers les sections principales
+
+2. Perspectives Économiques (perspectives-economiques.html) ✅
+    ● Tableau 1 - Prévisions macroéconomiques (PIB, croissance, inflation)
+    ● Tableau 2 - Taux de croissance sectorielle
+    ● Figure 1 - Évolution des croissances sectorielles (graphique)
+    ● Analyse des secteurs porteurs
+    ● Création de postes budgétaires (6 650 postes)
+
+3. Recettes
+    3.1. Vue d'ensemble (recettes.html) ✅
+        ● Figure 2 - Recettes totales de l'État
+        ● Répartition par source (Impôts, Douanes, Non fiscales, Dons)
+        ● Total : 12 626,7 milliards Ar
+        ● Comparaison 2024-2025 (+31,8%)
+
+    3.2. Recettes Fiscales (recettes-fiscales.html) ✅
+        ● Tableau 3 - Recettes fiscales intérieures détaillées
+        ● Objectif : 5 628,4 milliards Ar (+21,39%)
+        ● Nouvelles taxes (TTM, produits environnementaux)
+        ● Élargissement de l'assiette fiscale
+
+    3.3. Recettes Douanières (recettes-douanes.html) ✅
+        ● Tableau 4 - Recettes douanières
+        ● Montant : 4 366,0 milliards Ar (+15,9%)
+        ● Réformes (dématérialisation, ZES, tarifs)
+        ● Figure 3 - Évolution recettes fiscales/douanières
+
+    3.4. Recettes Non Fiscales (recettes-non-fiscales.html) ✅
+        ● Tableau 5 - Recettes non fiscales
+        ● Montant : 491,7 milliards Ar
+        ● Sources (dividendes, redevances minières)
+
+    3.5. Dons (recettes-dons.html) ✅
+        ● Tableau 6 - Composition des dons
+        ● Total : 2 476,6 milliards Ar
+        ● Répartition courants/capital
+
+4. Dépenses
+    4.1. Vue d'ensemble (depenses.html) ✅
+        ● Tableau 7 - Ventilation des dépenses par rubrique
+        ● Total : 16 304,9 milliards Ar (+27,6%)
+        ● Répartition nature économique
+
+    4.2. Par Nature Économique (depenses-nature.html) ✅
+        ● a. Intérêts de la dette (détail intérieur/extérieur)
+        ● b. Soldes et pensions (masse salariale, CRCM)
+        ● c. Fonctionnement hors solde (Tableau 9)
+        ● d. Investissement (PIP)
+
+    4.3. Par Ministère (depenses-ministeres.html) ✅
+        ● Tableau 10 - Répartition administrative complète
+        ● Top ministères (Travaux Publics, Énergie, Éducation, Santé)
+        ● Comparaison 2024-2025
+
+    4.4. Programmes d'Investissement (depenses-investissements.html) ✅
+        ● Figure 5 - Évolution investissements par source
+        ● PIP Énergie et transition écologique
+        ● PIP Agriculture durable
+        ● PIP Infrastructures
+        ● PIP Santé et éducation
+        ● Détails des projets par catégorie
+
+5. Déficit Budgétaire (deficit.html) ✅
+    5.1. Situation du Déficit (deficit-situation.html) ✅
+        ● Figure 6 - Prévision du déficit
+        ● Montant : 3 642,2 milliards Ar (4,1% PIB)
+        ● Calcul : Recettes + Dons vs Dépenses totales
+
+    5.2. Financement du Déficit (deficit-financement.html) ✅
+        ● Répartition financement intérieur/extérieur
+        ● Montants détaillés
+        ● Visualisation type "camembert"
