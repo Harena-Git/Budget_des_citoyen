@@ -1,6 +1,6 @@
 # Budget Citoyen 2025
 
-### Présentation du projet
+## Présentation du projet
 
 Ce projet a pour objectif de rendre la **lecture de la Loi de Finances 2025** plus claire, interactive et accessible pour le grand public.  
 Plutôt que de parcourir un long document PDF, notre site web propose une **navigation fluide et conviviale** à travers les principales sections du *Budget des citoyens relatif à la loi de finances 2025*.
@@ -36,6 +36,7 @@ Ce travail s’inscrit dans le cadre d’un **projet universitaire**, visant à 
 ### 1️⃣ Prérequis
 
 Avant de commencer, assurez-vous d’avoir installé :
+
 - [PHP](https://www.php.net/) (version ≥ 8.0)
 - [PostgreSQL](https://www.postgresql.org/)
 
@@ -68,8 +69,7 @@ Dans le répertoire du projet, exécutez :
 
 php -S localhost:8000 -t public
 
-
-Puis ouvrez http://localhost:8000
+Puis ouvrez <http://localhost:8000>
  dans votre navigateur.
 
 ## Fonctionnalités prévues
@@ -83,10 +83,11 @@ Liens entre catégories et sous-catégories budgétaires
 Interface claire et légère pour le grand public
 
 ## Contributeurs
-Nom	Pseudo GitHub
-Harena	@Harena-Git
 
-Ny Voary	@NyVoary
+Nom Pseudo GitHub
+Harena @Harena-Git
+
+Ny Voary @NyVoary
 
 ## Source officielle
 
