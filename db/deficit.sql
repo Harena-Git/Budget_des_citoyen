@@ -21,9 +21,10 @@ CREATE TABLE types_financement_deficit (
 -- ============================
 CREATE TABLE financements_deficit (
     id SERIAL PRIMARY KEY,
-    annee INTEGER NOT NULL UNIQUE,
+    annee INTEGER NOT NULL,
     type_financement_deficit_id INTEGER NOT NULL REFERENCES types_financement_deficit(id),
-    montant NUMERIC(15,2) NOT NULL
+    montant NUMERIC(15,2) NOT NULL,
+    UNIQUE (annee, type_financement_deficit_id)  -- Contrainte UNIQUE composite
 );
 
 -- ============================
@@ -49,11 +50,11 @@ INSERT INTO types_financement_deficit (nom) VALUES
 -- ============================
 -- Données: Financement du déficit
 -- ============================
+-- Maintenant ces INSERT fonctionneront
 INSERT INTO financements_deficit (annee, type_financement_deficit_id, montant) VALUES
 -- Financement 2024
 (2024, 1, 36),
 (2024, 2, 24),
-
 -- Financement 2025
 (2025, 1, 34.14),
 (2025, 2, 22.76);
