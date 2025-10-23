@@ -84,7 +84,6 @@ Interface claire et légère pour le grand public
 
 ## Contributeurs
 
-Nom Pseudo GitHub
 Harena @Harena-Git
 
 Ny Voary @NyVoary
