@@ -19,7 +19,7 @@ class Database {
     private function __construct($config) {
         try {
             $dsn = sprintf(
-                "pgsql:host=localhost;port=5432;dbname=budget_citoyen",
+                "pgsql:host=%s;port=%s;dbname=%s",
                 $config['host'],
                 $config['port'],
                 $config['dbname']
@@ -36,7 +36,11 @@ class Database {
                 ]
             );
         } catch (PDOException $e) {
-            throw new PDOException("Erreur de connexion à la base de données: " . $e->getMessage());
+            // Affiche l'erreur complète pour le débogage
+            die("Erreur de connexion à la base de données:<br>" . 
+                "Message: " . $e->getMessage() . "<br>" .
+                "DSN: " . $dsn . "<br>" .
+                "User: " . $config['user']);
         }
     }
 

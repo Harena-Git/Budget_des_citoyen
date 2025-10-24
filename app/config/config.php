@@ -3,6 +3,9 @@
 use flight\debug\tracy\TracyExtensionLoader;
 use Tracy\Debugger;
 
+// Define directory separator
+$ds = DIRECTORY_SEPARATOR;
+
 // Set the default timezone
 date_default_timezone_set('America/New_York');
 
