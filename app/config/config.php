@@ -68,14 +68,12 @@ if (Debugger::$showBar && php_sapi_name() !== 'cli') {
  */
 return [
 	'database' => [
-		// uncomment the below 4 lines for mysql
-		// 'host' => 'localhost',
-		// 'dbname' => 'dbname',
-		// 'user' => 'user',
-		// 'password' => 'password'
-
-		// uncomment the following line for sqlite
-		// 'file_path' => __DIR__ . $ds . '..' . $ds . 'database.sqlite'
+		// PostgreSQL configuration
+		'host' => 'localhost',
+		'port' => '5432',
+		'dbname' => 'budget_citoyen',
+		'user' => 'postgres',
+		'password' => 'harena'
 	],
 
 	// this is just here for an example

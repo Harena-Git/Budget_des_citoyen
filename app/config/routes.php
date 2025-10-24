@@ -1,5 +1,6 @@
 <?php
 
+use app\controllers\HomeController;
 use app\controllers\ApiExampleController;
 use flight\Engine;
 use flight\net\Router;
@@ -8,14 +9,31 @@ use flight\net\Router;
  * @var Router $router 
  * @var Engine $app
  */
+
+// Route principale - Page d'accueil
 $router->get('/', function() use ($app) {
-	$app->render('welcome', [ 'message' => 'You are gonna do great things!' ]);
+	$homeController = new HomeController($app);
+	$homeController->index();
 });
 
-$router->get('/hello-world/@name', function($name) {
-	echo '<h1>Hello world! Oh hey '.$name.'!</h1>';
+// Routes pour les autres pages (à implémenter)
+$router->get('/perspectives-economiques', function() use ($app) {
+	$app->render('pages/perspectives-economiques');
 });
 
+$router->get('/recettes', function() use ($app) {
+	$app->render('pages/recettes');
+});
+
+$router->get('/depenses', function() use ($app) {
+	$app->render('pages/depenses');
+});
+
+$router->get('/deficit', function() use ($app) {
+	$app->render('pages/deficit');
+});
+
+// Exemples API (à garder pour référence)
 $router->group('/api', function() use ($router, $app) {
 	$Api_Example_Controller = new ApiExampleController($app);
 	$router->get('/users', [ $Api_Example_Controller, 'getUsers' ]);

@@ -145,10 +145,10 @@ INSERT INTO depenses_nature (type_depense_nature_id, annee, montant) VALUES
 
 -- Detail de la dette
 INSERT INTO dette_details (type_dette_id, annee, interets, principal) VALUES
-(1, 2024, 35, 120), -- Interieure 2024
-(2, 2024, 50, 180), -- Exterieure 2024
-(1, 2025, 38, 135), -- Interieure 2025
-(2, 2025, 54, 200); -- Exterieure 2025
+(1, 2024, 35, 120),
+(2, 2024, 50, 180),
+(1, 2025, 38, 135),
+(2, 2025, 54, 200);
 
 -- Masses salariales
 INSERT INTO masses_salariales (type_masse_salariale_id, annee, montant) VALUES
@@ -164,22 +164,15 @@ INSERT INTO postes_budgetaires (ministere_id, annee, montant_salaires) VALUES
 
 -- Projets PIP detaillees
 INSERT INTO pip_projets (categorie_pip_id, nom_projet, description) VALUES
--- Energie
 (1, 'Renforcement energetique', 'Construction de nouvelles centrales'),
 (1, 'Energie solaire et foyers', 'Developpement des energies renouvelables'),
 (1, 'Infrastructures energetiques', 'Modernisation du reseau electrique'),
-
--- Agriculture
 (2, 'Production de riz', 'Augmentation de la production rizicole'),
 (2, 'Mecanisation PFUMVUDZA', 'Modernisation des techniques agricoles'),
 (2, 'Usines d''engrais', 'Production locale d''intrants agricoles'),
-
--- Infrastructures
 (3, 'Projets routiers', 'Construction et rehabilitation des routes'),
 (3, 'Train urbain', 'Developpement du transport ferroviaire'),
 (3, 'Amenagement urbain', 'Renovation des centres urbains'),
-
--- Sante/Education
 (4, 'Infrastructures sanitaires', 'Construction de centres de sante'),
 (4, 'Equipements scolaires', 'Rehabilitation des etablissements scolaires'),
 (4, 'Digitalisation', 'Equipement en technologies numeriques');
