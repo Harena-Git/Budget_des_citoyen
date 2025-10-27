@@ -1,0 +1,72 @@
+app/
+└── views/
+    ├── layouts/           # Layouts principaux (header, footer, etc.)
+    │   ├── main.php
+    │   ├── header.php
+    │   └── footer.php
+    ├── pages/             # Vos pages HTML converties en PHP
+    │   ├── index.php
+    │   ├── recettes.php
+    │   ├── recettes-fiscales.php
+    │   ├── recettes-douanes.php
+    │   ├── recettes-dons.php
+    │   ├── recettes-non-fiscales.php
+    │   ├── depenses.php
+    │   ├── depenses-ministeres.php
+    │   ├── depenses-nature.php
+    │   ├── depenses-investissements.php
+    │   ├── deficit.php
+    │   ├── deficit-situation.php
+    │   ├── deficit-financement.php
+    │   └── perspectives-economiques.php
+    └── components/        # Composants réutilisables (optionnel)
+        ├── navigation.php
+        └── charts.php
+
+
+public/
+├── index.php          # Point d'entrée (déjà existant)
+├── .htaccess          # Configuration Apache (déjà existant)
+├── css/
+│   └── style.css      # Votre style.css actuel
+├── js/
+│   └── app.js         # Scripts JavaScript
+├── images/
+│   └── ...            # Images du projet
+└── assets/            # Autres ressources statiques
+
+
+Budget_des_citoyen/
+├── app/
+│   ├── commands/          # Commandes CLI
+│   ├── config/            # Configuration
+│   │   ├── bootstrap.php
+│   │   ├── config.php
+│   │   └── routes.php
+│   ├── controllers/       # Contrôleurs
+│   │   ├── HomeController.php
+│   │   ├── RecettesController.php
+│   │   ├── DepensesController.php
+│   │   └── DeficitController.php
+│   ├── models/            # Modèles (à créer)
+│   │   ├── Recette.php
+│   │   ├── Depense.php
+│   │   └── Deficit.php
+│   ├── middlewares/       # Middlewares (à créer)
+│   ├── views/             # Vues (vos fichiers HTML)
+│   │   ├── layouts/
+│   │   ├── pages/
+│   │   └── components/
+│   ├── cache/             # Cache (à créer)
+│   └── log/               # Logs (à créer)
+├── db/                    # Base de données SQL
+├── public/                # Dossier public accessible
+│   ├── index.php
+│   ├── .htaccess
+│   ├── css/
+│   ├── js/
+│   └── images/
+├── test-front/            # Peut être supprimé après migration
+├── vendor/                # Dépendances Composer
+├── composer.json
+└── README.md
