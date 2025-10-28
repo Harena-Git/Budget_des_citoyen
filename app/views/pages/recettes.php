@@ -22,7 +22,6 @@ foreach ($categories as $key => $data) {
 // Début du contenu
 ob_start();
     
-    <!-- INTRODUCTION -->
     <section class="card">
       <h2>Recettes Totales de l'État 2025</h2>
       <p>Pour l'année 2025, le total des <strong>recettes et des dons</strong> s'élèvera à <span class="highlight">12 626,7 milliards d'Ariary</span>, soit une augmentation de <strong>31,8%</strong> par rapport à 2024. Cette progression résulte de réformes fiscales majeures, de l'élargissement de l'assiette fiscale et de l'optimisation de la collecte des recettes douanières.</p>

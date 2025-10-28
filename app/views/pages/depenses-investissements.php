@@ -1,43 +1,16 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Programmes d'Investissement 2025 - Budget des Citoyens</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  
-  <!-- HEADER -->
-  <header>
-    <div class="header-content">
-      <h1>Budget des Citoyens 2025</h1>
-      <p class="subtitle">Loi de Finances | Repoblikan'i Madagasikara</p>
-    </div>
-  </header>
+<?php
+use app\helpers\ViewHelper;
 
-  <!-- NAVIGATION -->
-  <nav>
-    <ul>
-      <li><a href="index.html">Accueil</a></li>
-      <li><a href="perspectives-economiques.html">Perspectives</a></li>
-      <li><a href="recettes.html">Recettes</a></li>
-      <li><a href="depenses.html">Dépenses</a></li>
-      <li><a href="deficit.html">Déficit</a></li>
-    </ul>
-  </nav>
+$title = "Investissements Publics (PIP) 2025";
+$breadcrumb = ['/' => 'Accueil', '/depenses' => 'Dépenses', '/depenses/investissements' => 'Investissements'];
 
-  <!-- BREADCRUMB -->
-  <div class="breadcrumb">
-    <a href="depenses.html">Dépenses</a> > Programmes d'Investissement
-  </div>
+// Début du contenu
+ob_start();
+?>
 
-  <!-- MAIN CONTENT -->
-  <main>
-    
     <!-- INTRODUCTION -->
-    <section class="card">
-      <h2>Programmes d'Investissements Publics (PIP) 2025</h2>
       <p>Le montant des investissements publics s'élève à <span class="highlight">8 537,2 milliards d'Ariary</span> en 2025, marquant une augmentation conséquente de <strong>82,9%</strong> par rapport à 2024. Cette hausse s'explique par la priorisation des investissements dans les secteurs structurants pour le développement économique et social du pays.</p>
     </section>
 
@@ -397,13 +370,7 @@
 
   </main>
 
-  <!-- FOOTER -->
-  <footer>
-    <p><strong>Ministère de l'Économie et des Finances</strong></p>
-    <p>Direction Générale du Budget et des Finances | Budget des Citoyens 2025</p>
-    <p>Harena & Ny Voary</p>
-    <p style="font-size: 0.9rem; opacity: 0.8;">Document simplifié pour la transparence budgétaire</p>
-  </footer>
-
-</body>
-</html>
+<?php
+$content = ob_get_clean();
+require dirname(__DIR__) . '/layouts/main.php';
+?>

@@ -1,0 +1,43 @@
+TODO - Budget_des_citoyen (branch: integration)
+
+Objectif: Restaurer et finaliser les vues et le backend manquants pour l'application.
+
+1) Restaurer ce fichier TODO (fait)
+
+2) Adapter et convertir les vues (passer à un layout commun, utiliser ViewHelper et données dynamiques)
+   - app/views/pages/deficit.php
+   - app/views/pages/deficit-situation.php
+   - app/views/pages/deficit-financement.php
+   - app/views/pages/depenses.php
+   - app/views/pages/depenses-nature.php
+   - app/views/pages/depenses-ministeres.php
+   - app/views/pages/depenses-investissements.php
+
+3) Vérifier les controllers et modèles
+   - app/controllers/DeficitController.php (déjà présent)
+   - app/controllers/DepensesController.php (déjà présent)
+   - app/models/DeficitModel.php (déjà présent)
+   - app/models/DepensesModel.php (déjà présent)
+   - S'assurer que les méthodes utilisées par les controllers existent et retournent les données attendues.
+
+4) S'assurer que `app/helpers/ViewHelper.php` est présent et fournit:
+   - formatMontant($value)
+   - formatVariation($value)
+   - formatPourcentage($value)
+
+5) Mettre à jour les routes si nécessaire
+   - app/config/routes.php
+   - Ajouter routes pour les sous-pages si manquantes (/deficit, /deficit/situation, /deficit/financement, /depenses, /depenses/nature, /depenses/ministeres, /depenses/investissements)
+
+6) Tests rapides
+   - Valider la syntaxe PHP des vues (php -l) et charger les pages via le routeur local si possible.
+
+Notes:
+- Préserver le design existant en réutilisant les blocs HTML, mais sortir l'en-tête/pied dans `app/views/layouts/main.php`.
+- Si des données manquent dans la base de données, remplacer par des valeurs par défaut contrôlées pour éviter les erreurs.
+
+Etat actuel (à faire):
+- TODO recréé
+- Conversion des vues en cours
+
+Si tu veux, je peux commencer la conversion maintenant (je vais éditer les fichiers listés une par une et valider la syntaxe).
