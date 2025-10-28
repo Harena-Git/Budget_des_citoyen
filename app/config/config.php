@@ -9,6 +9,9 @@ date_default_timezone_set('America/New_York');
 // Set the error reporting level
 error_reporting(E_ALL);
 
+// Directory separator helper
+$ds = DIRECTORY_SEPARATOR;
+
 // Set the default character encoding
 if(function_exists('mb_internal_encoding') === true) {
 	mb_internal_encoding('UTF-8');
