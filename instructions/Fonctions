@@ -1,0 +1,11 @@
+PAGE D'ACCUEIL
+1. Fonctions Données clés
+/**
+ * Récupère les chiffres clés pour l'accueil
+ * @return array {recettes_total: float, depenses_total: float, deficit: float, croissance_pib: float}
+ */
+- nom: getChiffresCles
+- input: aucun
+- output: array
+- tables: recettes_data, depenses_nature, deficit_situations
+

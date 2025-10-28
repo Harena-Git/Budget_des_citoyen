@@ -1,0 +1,25 @@
+Pages Principales
+=================
+GET  /                             # Page d'accueil
+GET  /perspectives                 # Perspectives économiques
+GET  /deficit                      # Déficit budgétaire (vue générale)
+GET  /recettes                    # Vue d'ensemble des recettes
+GET  /depenses                    # Vue d'ensemble des dépenses
+
+Sections Recettes
+=================
+GET  /recettes/fiscales           # Recettes fiscales détaillées
+GET  /recettes/douanes            # Recettes douanières
+GET  /recettes/non-fiscales       # Recettes non fiscales
+GET  /recettes/dons               # Dons
+
+Sections Dépenses
+=================
+GET  /depenses/nature             # Dépenses par nature économique
+GET  /depenses/ministeres         # Dépenses par ministère
+GET  /depenses/investissements    # Programmes d'investissement
+
+Sections Déficit
+=================
+GET  /deficit/situation           # Situation du déficit
+GET  /deficit/financement         # Financement du déficit
