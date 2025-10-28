@@ -19,7 +19,8 @@ foreach ($categories as $key => $data) {
     ];
 }
 
-// Début du contenu de la page
+// Début du contenu
+ob_start();
     
     <!-- INTRODUCTION -->
     <section class="card">
@@ -395,5 +396,7 @@ foreach ($categories as $key => $data) {
     <p style="font-size: 0.9rem; opacity: 0.8;">Document simplifié pour la transparence budgétaire</p>
   </footer>
 
-</body>
-</html>
+<?php
+$content = ob_get_clean();
+require dirname(__DIR__) . '/layouts/main.php';
+?>

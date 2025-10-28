@@ -1,36 +1,18 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Recettes Douanières 2025 - Budget des Citoyens</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  
-  <!-- HEADER -->
-  <header>
-    <div class="header-content">
-      <h1>Budget des Citoyens 2025</h1>
-      <p class="subtitle">Loi de Finances | Repoblikan'i Madagasikara</p>
-    </div>
-  </header>
+<?php
+use app\helpers\ViewHelper;
 
-  <!-- NAVIGATION -->
-  <nav>
-    <ul>
-      <li><a href="index.html">Accueil</a></li>
-      <li><a href="perspectives-economiques.html">Perspectives</a></li>
-      <li><a href="recettes.html">Recettes</a></li>
-      <li><a href="depenses.html">Dépenses</a></li>
-      <li><a href="deficit.html">Déficit</a></li>
-    </ul>
-  </nav>
+// Définit le titre de la page
+$title = "Recettes Douanières 2025";
 
-  <!-- BREADCRUMB -->
-  <div class="breadcrumb">
-    <a href="recettes.html">Recettes</a> > Recettes Douanières
-  </div>
+// Initialise les liens du fil d'Ariane
+$breadcrumb = [
+    '/' => 'Accueil',
+    '/recettes' => 'Recettes',
+    '/recettes/douanes' => 'Recettes Douanières'
+];
+
+// Début du contenu
+ob_start();
 
   <!-- MAIN CONTENT -->
   <main>
@@ -277,13 +259,7 @@
 
   </main>
 
-  <!-- FOOTER -->
-  <footer>
-    <p><strong>Ministère de l'Économie et des Finances</strong></p>
-    <p>Direction Générale du Budget et des Finances | Budget des Citoyens 2025</p>
-    <p>Harena & Ny Voary</p>
-    <p style="font-size: 0.9rem; opacity: 0.8;">Document simplifié pour la transparence budgétaire</p>
-  </footer>
-
-</body>
-</html>
+<?php
+$content = ob_get_clean();
+require dirname(__DIR__) . '/layouts/main.php';
+?>
