@@ -1,34 +1,25 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Recettes 2025 - Budget des Citoyens</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  
-  <!-- HEADER -->
-  <header>
-    <div class="header-content">
-      <h1>Budget des Citoyens 2025</h1>
-      <p class="subtitle">Loi de Finances | Repoblikan'i Madagasikara</p>
-    </div>
-  </header>
+<?php
+use app\helpers\ViewHelper;
 
-  <!-- NAVIGATION -->
-  <nav>
-    <ul>
-      <li><a href="index.html">Accueil</a></li>
-      <li><a href="perspectives-economiques.html">Perspectives</a></li>
-      <li><a href="recettes.html" class="active">Recettes</a></li>
-      <li><a href="depenses.html">Dépenses</a></li>
-      <li><a href="deficit.html">Déficit</a></li>
-    </ul>
-  </nav>
+// Définit le titre de la page
+$title = "Recettes 2025";
 
-  <!-- MAIN CONTENT -->
-  <main>
+// Initialise les liens du fil d'Ariane
+$breadcrumb = [
+    '/' => 'Accueil',
+    '/recettes' => 'Recettes'
+];
+
+// Formate les données pour l'affichage
+$recettes_format = [];
+foreach ($categories as $key => $data) {
+    $recettes_format[$key] = [
+        'montant' => ViewHelper::formatMontant($data['montant']),
+        'variation' => ViewHelper::formatVariation($data['variation'])
+    ];
+}
+
+// Début du contenu de la page
     
     <!-- INTRODUCTION -->
     <section class="card">

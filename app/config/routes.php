@@ -16,21 +16,77 @@ $router->get('/', function() use ($app) {
 	$homeController->index();
 });
 
-// Routes pour les autres pages (à implémenter)
+// Import des contrôleurs
+use app\controllers\RecettesController;
+use app\controllers\DepensesController;
+use app\controllers\DeficitController;
+
+// Route perspectives économiques
 $router->get('/perspectives-economiques', function() use ($app) {
-	$app->render('pages/perspectives-economiques');
+    $app->render('pages/perspectives-economiques');
 });
 
+// Routes Recettes
 $router->get('/recettes', function() use ($app) {
-	$app->render('pages/recettes');
+    $controller = new RecettesController($app);
+    $controller->index();
 });
 
+$router->get('/recettes-fiscales', function() use ($app) {
+    $controller = new RecettesController($app);
+    $controller->fiscales();
+});
+
+$router->get('/recettes-douanes', function() use ($app) {
+    $controller = new RecettesController($app);
+    $controller->douanes();
+});
+
+$router->get('/recettes-non-fiscales', function() use ($app) {
+    $controller = new RecettesController($app);
+    $controller->nonFiscales();
+});
+
+$router->get('/recettes-dons', function() use ($app) {
+    $controller = new RecettesController($app);
+    $controller->dons();
+});
+
+// Routes Dépenses
 $router->get('/depenses', function() use ($app) {
-	$app->render('pages/depenses');
+    $controller = new DepensesController($app);
+    $controller->index();
 });
 
+$router->get('/depenses-nature', function() use ($app) {
+    $controller = new DepensesController($app);
+    $controller->nature();
+});
+
+$router->get('/depenses-ministeres', function() use ($app) {
+    $controller = new DepensesController($app);
+    $controller->ministeres();
+});
+
+$router->get('/depenses-investissements', function() use ($app) {
+    $controller = new DepensesController($app);
+    $controller->investissements();
+});
+
+// Routes Déficit
 $router->get('/deficit', function() use ($app) {
-	$app->render('pages/deficit');
+    $controller = new DeficitController($app);
+    $controller->index();
+});
+
+$router->get('/deficit-situation', function() use ($app) {
+    $controller = new DeficitController($app);
+    $controller->situation();
+});
+
+$router->get('/deficit-financement', function() use ($app) {
+    $controller = new DeficitController($app);
+    $controller->financement();
 });
 
 // Exemples API (à garder pour référence)
