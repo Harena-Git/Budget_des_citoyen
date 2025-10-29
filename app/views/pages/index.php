@@ -29,6 +29,24 @@
 
   <!-- MAIN CONTENT -->
   <main>
+    <?php
+    // Définitions par défaut si la vue est rendue sans controller
+    $recettes_total = $recettes_total ?? 0;
+    $depenses_total = $depenses_total ?? 0;
+    $deficit = $deficit ?? 0;
+    $recettes_variation = $recettes_variation ?? 0;
+    $depenses_variation = $depenses_variation ?? 0;
+    $impots = $impots ?? 0;
+    $douanes = $douanes ?? 0;
+    $non_fiscales = $non_fiscales ?? 0;
+    $dons = $dons ?? 0;
+    $investissements = $investissements ?? 0;
+    $salaires = $salaires ?? 0;
+    $fonctionnement = $fonctionnement ?? 0;
+    $dette = $dette ?? 0;
+    $croissance_pib = $croissance_pib ?? 0;
+    $croissance_pib_precedent = $croissance_pib_precedent ?? 0;
+    ?>
     
     <!-- CHIFFRES CLÉS -->
     <section class="card">

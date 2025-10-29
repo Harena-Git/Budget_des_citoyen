@@ -6,6 +6,19 @@ $breadcrumb = ['/' => 'Accueil', '/deficit' => 'Déficit', '/deficit/financement
 
 // Début du contenu
 ob_start();
+// Valeurs par défaut pour éviter les "Undefined variable" si la vue est rendue sans controller
+$financement = $financement ?? [];
+$total_interieur = $total_interieur ?? 0;
+$total_exterieur = $total_exterieur ?? 0;
+if (!isset($helper)) {
+  $helper = new class {
+    public function formatNumber($n) {
+      if ($n === null || $n === '') return '';
+      if (is_numeric($n)) return number_format($n, (floor($n) == $n) ? 0 : 1, ',', ' ');
+      return htmlspecialchars((string)$n, ENT_QUOTES, 'UTF-8');
+    }
+  };
+}
 ?>
 
     <!-- INTRODUCTION -->

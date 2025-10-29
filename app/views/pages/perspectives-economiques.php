@@ -29,6 +29,29 @@
 
   <!-- MAIN CONTENT -->
   <main>
+    <?php
+    // Définitions par défaut pour éviter les "Undefined variable" si la vue est rendue
+    // directement (sans passer par le controller qui fournit les données).
+    $indicateursMacro = $indicateursMacro ?? [];
+    $previsionsMacro = $previsionsMacro ?? [];
+    $croissanceSectorielle = $croissanceSectorielle ?? [];
+    $postesBudgetaires = $postesBudgetaires ?? [];
+    $secteursPorteurs = $secteursPorteurs ?? [];
+
+    if (!isset($helper)) {
+      // Fournir un helper minimal si ViewHelper n'est pas injecté par le controller.
+      $helper = new class {
+        public function formatNumber($n) {
+          if ($n === null || $n === '') return '';
+          if (is_numeric($n)) {
+            // Si entier, pas de décimales ; sinon 1 décimale.
+            return number_format($n, (floor($n) == $n) ? 0 : 1, ',', ' ');
+          }
+          return htmlspecialchars((string)$n, ENT_QUOTES, 'UTF-8');
+        }
+      };
+    }
+    ?>
     
     <!-- INTRODUCTION -->
     <section class="card">
@@ -279,7 +302,10 @@
         <div style="border-left: 5px solid <?= $color ?>; padding: 1rem; background: <?= $bgColor ?>;">
           <h3 style="color: <?= $color ?>; margin-top: 0;"><?= $secteur['secteur'] ?> : <?= $helper->formatNumber($secteur['croissance']) ?>%</h3>
           <ul class="styled-list">
-            <?php foreach ($secteur['points_cles'] as $point): ?>
+            <?php 
+            $points = explode("\n", $secteur['points_cles']);
+            foreach ($points as $point): 
+            ?>
               <li><?= $point ?></li>
             <?php endforeach; ?>
           </ul>

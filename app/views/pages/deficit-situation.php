@@ -6,6 +6,19 @@ $breadcrumb = ['/' => 'Accueil', '/deficit' => 'Déficit', '/deficit/situation' 
 
 // Début du contenu
 ob_start();
+// Valeurs par défaut
+$situation_actuelle = $situation_actuelle ?? ['montant_deficit' => 0];
+$evolution = $evolution ?? [];
+$pourcentage_pib = $pourcentage_pib ?? 0;
+if (!isset($helper)) {
+  $helper = new class {
+    public function formatNumber($n) {
+      if ($n === null || $n === '') return '';
+      if (is_numeric($n)) return number_format($n, (floor($n) == $n) ? 0 : 1, ',', ' ');
+      return htmlspecialchars((string)$n, ENT_QUOTES, 'UTF-8');
+    }
+  };
+}
 ?>
 
     <!-- INTRODUCTION -->

@@ -7,6 +7,18 @@ $breadcrumb = ['/' => 'Accueil', '/deficit' => 'Déficit'];
 
 // Début du contenu
 ob_start();
+// Valeurs par défaut
+$situation = $situation ?? [];
+$financement = $financement ?? [];
+if (!isset($helper)) {
+  $helper = new class {
+    public function formatNumber($n) {
+      if ($n === null || $n === '') return '';
+      if (is_numeric($n)) return number_format($n, (floor($n) == $n) ? 0 : 1, ',', ' ');
+      return htmlspecialchars((string)$n, ENT_QUOTES, 'UTF-8');
+    }
+  };
+}
 ?>
 
     <!-- INTRODUCTION -->
