@@ -31,6 +31,7 @@ class RecettesController {
         try {
             // Récupère les données
             $total = $this->recettesModel->getTotalRecettes($annee);
+            $total_precedent = $this->recettesModel->getTotalRecettes($annee_precedente);
             $fiscales = $this->recettesModel->getRecettesFiscales($annee);
             $douanes = $this->recettesModel->getRecettesDouanieres($annee);
             $non_fiscales = $this->recettesModel->getRecettesNonFiscales($annee);
@@ -44,6 +45,8 @@ class RecettesController {
 
             // Prépare les données pour la vue
             $data = [
+                'annee' => $annee,
+                'annee_precedent' => $annee_precedente,
                 'total' => $total,
                 'categories' => [
                     'fiscales' => [
@@ -64,6 +67,9 @@ class RecettesController {
                     ]
                 ]
             ];
+
+            // Ajout du total année précédente pour calculer la variation
+            $data['total_precedent'] = $total_precedent;
 
             // Rend la vue avec les données
             $this->app->render('pages/recettes', $data);

@@ -22,39 +22,37 @@ foreach ($categories as $key => $data) {
 // Début du contenu
 ob_start();
 ?>
-  <section class="card">
-      <h2>Recettes Totales de l'État 2025</h2>
-      <p>Pour l'année 2025, le total des <strong>recettes et des dons</strong> s'élèvera à <span class="highlight">12 626,7 milliards d'Ariary</span>, soit une augmentation de <strong>31,8%</strong> par rapport à 2024. Cette progression résulte de réformes fiscales majeures, de l'élargissement de l'assiette fiscale et de l'optimisation de la collecte des recettes douanières.</p>
-    </section>
-
-    <!-- CHIFFRES CLÉS -->
+    <section class="card">
+      <h2>Recettes Totales de l'État <?= $annee ?></h2>
+      <p>Pour l'année <?= $annee ?>, le total des <strong>recettes et des dons</strong> s'élèvera à <span class="highlight"><?= ViewHelper::formatMontant($total) ?> milliards d'Ariary</span>, soit une augmentation de <strong><?= ViewHelper::formatVariation(($total - $total_precedent) / $total_precedent * 100) ?></strong> par rapport à <?= $annee_precedent ?>. Cette progression résulte de réformes fiscales majeures, de l'élargissement de l'assiette fiscale et de l'optimisation de la collecte des recettes douanières.</p>
+    </section>    <!-- CHIFFRES CLÉS -->
     <section class="card">
       <h2>Chiffres Clés des Recettes 2025</h2>
       <div class="stats-grid">
         <div class="stat-box">
           <div class="label">Recettes Fiscales Intérieures</div>
-          <div class="value">5 628 Mds Ar</div>
-          <div class="change">+21,4% vs 2024</div>
+          <div class="value"><?= ViewHelper::formatMontant($categories['fiscales']['montant']) ?> Mds Ar</div>
+          <div class="change"><?= ViewHelper::formatVariation($categories['fiscales']['variation']) ?> vs 2024</div>
         </div>
         <div class="stat-box">
           <div class="label">Recettes Douanières</div>
-          <div class="value">4 366 Mds Ar</div>
-          <div class="change">+15,9% vs 2024</div>
+          <div class="value"><?= ViewHelper::formatMontant($categories['douanes']['montant']) ?> Mds Ar</div>
+          <div class="change"><?= ViewHelper::formatVariation($categories['douanes']['variation']) ?> vs 2024</div>
         </div>
         <div class="stat-box">
           <div class="label">Recettes Non Fiscales</div>
-          <div class="value">492 Mds Ar</div>
-          <div class="change">+42,2% vs 2024</div>
+          <div class="value"><?= ViewHelper::formatMontant($categories['non_fiscales']['montant']) ?> Mds Ar</div>
+          <div class="change"><?= ViewHelper::formatVariation($categories['non_fiscales']['variation']) ?> vs 2024</div>
         </div>
         <div class="stat-box">
           <div class="label">Dons</div>
-          <div class="value">2 477 Mds Ar</div>
-          <div class="change">+128% vs 2024</div>
+          <div class="value"><?= ViewHelper::formatMontant($categories['dons']['montant']) ?> Mds Ar</div>
+          <div class="change"><?= ViewHelper::formatVariation($categories['dons']['variation']) ?> vs 2024</div>
         </div>
         <div class="stat-box">
           <div class="label">Total Recettes + Dons</div>
-          <div class="value">12 627 Mds Ar</div>
-          <div class="change">+31,8% vs 2024</div>
+          <div class="value"><?= ViewHelper::formatMontant($total) ?> Mds Ar</div>
+          <div class="change"><?= ViewHelper::formatVariation(($total - $total_precedent) / $total_precedent * 100) ?> vs 2024</div>
         </div>
         <div class="stat-box">
           <div class="label">Taux de Pression Fiscale</div>

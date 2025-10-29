@@ -20,10 +20,12 @@ $router->get('/', function() use ($app) {
 use app\controllers\RecettesController;
 use app\controllers\DepensesController;
 use app\controllers\DeficitController;
+use app\controllers\PerspectivesController;
 
 // Route perspectives économiques
 $router->get('/perspectives-economiques', function() use ($app) {
-    $app->render('pages/perspectives-economiques');
+    $controller = new PerspectivesController($app);
+    $controller->index();
 });
 
 // Routes Recettes

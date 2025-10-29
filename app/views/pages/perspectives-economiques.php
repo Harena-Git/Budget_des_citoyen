@@ -40,36 +40,20 @@
     <section class="card">
       <h2>Indicateurs Macroéconomiques Clés</h2>
       <div class="stats-grid">
-        <div class="stat-box">
-          <div class="label">PIB Nominal 2025</div>
-          <div class="value">88 852 Mds Ar</div>
-          <div class="change">+12,5% vs 2024</div>
-        </div>
-        <div class="stat-box">
-          <div class="label">Taux de Croissance</div>
-          <div class="value">5,0%</div>
-          <div class="change">vs 4,4% en 2024</div>
-        </div>
-        <div class="stat-box negative">
-          <div class="label">Inflation (fin période)</div>
-          <div class="value">7,1%</div>
-          <div class="change">-1,1 pts vs 2024</div>
-        </div>
-        <div class="stat-box">
-          <div class="label">Taux Pression Fiscale</div>
-          <div class="value">11,2%</div>
-          <div class="change">+0,6 pts vs 2024</div>
-        </div>
-        <div class="stat-box">
-          <div class="label">Investissement Public</div>
-          <div class="value">9,6% PIB</div>
-          <div class="change">+3,5 pts vs 2024</div>
-        </div>
-        <div class="stat-box">
-          <div class="label">Taux de Change USD/Ar</div>
-          <div class="value">4 689 Ar</div>
-          <div class="change">Moyenne période</div>
-        </div>
+        <?php foreach ($indicateursMacro as $indicateur): ?>
+          <?php
+            $isNegative = ($indicateur['variation'] && $indicateur['variation'] < 0) ? 'negative' : '';
+            $valeurFormatted = $helper->formatNumber($indicateur['valeur']);
+            $variationText = $indicateur['variation'] 
+              ? ($indicateur['variation'] > 0 ? '+' : '') . $indicateur['variation'] . ' pts vs 2024'
+              : 'Moyenne période';
+          ?>
+          <div class="stat-box <?= $isNegative ?>">
+            <div class="label"><?= $indicateur['indicateur'] ?></div>
+            <div class="value"><?= $valeurFormatted ?></div>
+            <div class="change"><?= $variationText ?></div>
+          </div>
+        <?php endforeach; ?>
       </div>
     </section>
 
@@ -86,18 +70,20 @@
           </tr>
         </thead>
         <tbody>
+          <?php
+            $previsions = [];
+            foreach ($previsionsMacro as $prevision) {
+              $previsions[$prevision['agregat']][$prevision['annee']] = $prevision['valeur'];
+            }
+            foreach ($previsions as $agregat => $annees):
+          ?>
           <tr>
-            <td>PIB nominal (milliards d'Ariary)</td>
-            <td class="number">78 945,4</td>
-            <td class="number"><strong>88 851,6</strong></td>
-            <td class="number">99 826,3</td>
+            <td><?= $agregat ?></td>
+            <td class="number"><?= isset($annees[2024]) ? $helper->formatNumber($annees[2024]) : '' ?></td>
+            <td class="number"><strong><?= isset($annees[2025]) ? $helper->formatNumber($annees[2025]) : '' ?></strong></td>
+            <td class="number"><?= isset($annees[2026]) ? $helper->formatNumber($annees[2026]) : '' ?></td>
           </tr>
-          <tr>
-            <td>Taux de croissance économique (%)</td>
-            <td class="number">4,4</td>
-            <td class="number"><strong>5,0</strong></td>
-            <td class="number">5,2</td>
-          </tr>
+          <?php endforeach; ?>
           <tr>
             <td>Indice des prix (fin de période, %)</td>
             <td class="number">8,2</td>
@@ -228,190 +214,46 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td><strong>Secteur Primaire</strong></td>
-            <td class="number"><strong>5,3</strong></td>
-            <td class="number"><strong>7,8</strong></td>
-            <td class="number"><span class="badge success">+2,5 pts</span></td>
-          </tr>
-          <tr>
-            <td>&nbsp;&nbsp;Agriculture</td>
-            <td class="number">6,0</td>
-            <td class="number"><strong>9,5</strong></td>
-            <td class="number"><span class="badge success">+3,5 pts</span></td>
-          </tr>
-          <tr>
-            <td>&nbsp;&nbsp;Élevage et pêche</td>
-            <td class="number">3,9</td>
-            <td class="number">4,0</td>
-            <td class="number"><span class="badge info">+0,1 pt</span></td>
-          </tr>
-          <tr>
-            <td>&nbsp;&nbsp;Sylviculture</td>
-            <td class="number">1,0</td>
-            <td class="number">1,1</td>
-            <td class="number"><span class="badge info">+0,1 pt</span></td>
-          </tr>
-        </tbody>
-      </table>
+        <?php
+          $secteursPrincipaux = array_filter($croissanceSectorielle, function($item) {
+            return $item['sous_secteur'] === null;
+          });
+          $sousSecteurs = array_filter($croissanceSectorielle, function($item) {
+            return $item['sous_secteur'] !== null;
+          });
 
-      <h3 style="margin-top: 2rem;">Secteur Secondaire</h3>
-      <table>
-        <thead>
-          <tr>
-            <th>Sous-secteur</th>
-            <th class="number">2024 (%)</th>
-            <th class="number">2025 (%)</th>
-            <th class="number">Évolution</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Secteur Secondaire</strong></td>
-            <td class="number"><strong>-3,3</strong></td>
-            <td class="number"><strong>3,4</strong></td>
-            <td class="number"><span class="badge success">+6,7 pts</span></td>
-          </tr>
-          <tr>
-            <td>&nbsp;&nbsp;Industrie extractive</td>
-            <td class="number">-20,8</td>
-            <td class="number"><strong>4,0</strong></td>
-            <td class="number"><span class="badge success">+24,8 pts</span></td>
-          </tr>
-          <tr>
-            <td>&nbsp;&nbsp;Alimentaire, boisson, tabac</td>
-            <td class="number">0,9</td>
-            <td class="number">2,4</td>
-            <td class="number"><span class="badge success">+1,5 pts</span></td>
-          </tr>
-          <tr>
-            <td>&nbsp;&nbsp;Textile</td>
-            <td class="number">31,6</td>
-            <td class="number">4,0</td>
-            <td class="number"><span class="badge danger">-27,6 pts</span></td>
-          </tr>
-          <tr>
-            <td>&nbsp;&nbsp;Bois, papiers, imprimerie</td>
-            <td class="number">0,4</td>
-            <td class="number">0,7</td>
-            <td class="number"><span class="badge info">+0,3 pt</span></td>
-          </tr>
-          <tr>
-            <td>&nbsp;&nbsp;Matériaux de construction</td>
-            <td class="number">7,9</td>
-            <td class="number">8,0</td>
-            <td class="number"><span class="badge info">+0,1 pt</span></td>
-          </tr>
-          <tr>
-            <td>&nbsp;&nbsp;Industrie métallique</td>
-            <td class="number">7,2</td>
-            <td class="number">7,3</td>
-            <td class="number"><span class="badge info">+0,1 pt</span></td>
-          </tr>
-          <tr>
-            <td>&nbsp;&nbsp;Machine, matériels électriques</td>
-            <td class="number">3,1</td>
-            <td class="number">3,2</td>
-            <td class="number"><span class="badge info">+0,1 pt</span></td>
-          </tr>
-          <tr>
-            <td>&nbsp;&nbsp;Industries diverses</td>
-            <td class="number">0,5</td>
-            <td class="number">0,6</td>
-            <td class="number"><span class="badge info">+0,1 pt</span></td>
-          </tr>
-          <tr>
-            <td>&nbsp;&nbsp;Électricité, eau, gaz</td>
-            <td class="number">3,9</td>
-            <td class="number">4,0</td>
-            <td class="number"><span class="badge info">+0,1 pt</span></td>
-          </tr>
-        </tbody>
-      </table>
+          foreach ($secteursPrincipaux as $secteur) {
+            $sousSecteursFiltered = array_filter($sousSecteurs, function($item) use ($secteur) {
+              return $item['secteur'] === $secteur['secteur'];
+            });
 
-      <h3 style="margin-top: 2rem;">Secteur Tertiaire</h3>
-      <table>
-        <thead>
-          <tr>
-            <th>Sous-secteur</th>
-            <th class="number">2024 (%)</th>
-            <th class="number">2025 (%)</th>
-            <th class="number">Évolution</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Secteur Tertiaire</strong></td>
-            <td class="number"><strong>5,0</strong></td>
-            <td class="number"><strong>5,4</strong></td>
-            <td class="number"><span class="badge success">+0,4 pt</span></td>
-          </tr>
-          <tr>
-            <td>&nbsp;&nbsp;BTP</td>
-            <td class="number">3,2</td>
-            <td class="number">3,6</td>
-            <td class="number"><span class="badge info">+0,4 pt</span></td>
-          </tr>
-          <tr>
-            <td>&nbsp;&nbsp;Commerce, entretiens, réparations</td>
-            <td class="number">4,2</td>
-            <td class="number">4,3</td>
-            <td class="number"><span class="badge info">+0,1 pt</span></td>
-          </tr>
-          <tr>
-            <td>&nbsp;&nbsp;Hôtel, restaurant</td>
-            <td class="number">14,7</td>
-            <td class="number"><strong>14,9</strong></td>
-            <td class="number"><span class="badge success">+0,2 pt</span></td>
-          </tr>
-          <tr>
-            <td>&nbsp;&nbsp;Transport</td>
-            <td class="number">7,0</td>
-            <td class="number">7,2</td>
-            <td class="number"><span class="badge success">+0,2 pt</span></td>
-          </tr>
-          <tr>
-            <td>&nbsp;&nbsp;Poste et télécommunication</td>
-            <td class="number">13,4</td>
-            <td class="number"><strong>13,7</strong></td>
-            <td class="number"><span class="badge success">+0,3 pt</span></td>
-          </tr>
-          <tr>
-            <td>&nbsp;&nbsp;Banque, assurance</td>
-            <td class="number">5,3</td>
-            <td class="number">6,1</td>
-            <td class="number"><span class="badge success">+0,8 pt</span></td>
-          </tr>
-          <tr>
-            <td>&nbsp;&nbsp;Services aux entreprises</td>
-            <td class="number">2,3</td>
-            <td class="number">2,4</td>
-            <td class="number"><span class="badge info">+0,1 pt</span></td>
-          </tr>
-          <tr>
-            <td>&nbsp;&nbsp;Administration</td>
-            <td class="number">1,7</td>
-            <td class="number">1,9</td>
-            <td class="number"><span class="badge info">+0,2 pt</span></td>
-          </tr>
-          <tr>
-            <td>&nbsp;&nbsp;Éducation</td>
-            <td class="number">1,7</td>
-            <td class="number">1,8</td>
-            <td class="number"><span class="badge info">+0,1 pt</span></td>
-          </tr>
-          <tr>
-            <td>&nbsp;&nbsp;Santé</td>
-            <td class="number">1,8</td>
-            <td class="number">1,9</td>
-            <td class="number"><span class="badge info">+0,1 pt</span></td>
-          </tr>
-          <tr>
-            <td>&nbsp;&nbsp;Services rendus aux ménages</td>
-            <td class="number">1,3</td>
-            <td class="number">1,4</td>
-            <td class="number"><span class="badge info">+0,1 pt</span></td>
-          </tr>
+            // Afficher secteur principal
+            $variationClass = $secteur['variation'] > 0 ? 'success' : ($secteur['variation'] < 0 ? 'danger' : 'info');
+            $variationText = $secteur['variation'] > 0 ? '+' . $secteur['variation'] . ' pts' : $secteur['variation'] . ' pts';
+            ?>
+            <tr>
+              <td><strong><?= $secteur['secteur'] ?></strong></td>
+              <td class="number"><strong><?= $helper->formatNumber($secteur['taux_croissance_precedent']) ?></strong></td>
+              <td class="number"><strong><?= $helper->formatNumber($secteur['taux_croissance']) ?></strong></td>
+              <td class="number"><span class="badge <?= $variationClass ?>"><?= $variationText ?></span></td>
+            </tr>
+
+            <?php
+            // Afficher sous-secteurs
+            foreach ($sousSecteursFiltered as $sousSecteur) {
+              $variationClass = $sousSecteur['variation'] > 0 ? 'success' : ($sousSecteur['variation'] < 0 ? 'danger' : 'info');
+              $variationText = $sousSecteur['variation'] > 0 ? '+' . $sousSecteur['variation'] . ' pts' : $sousSecteur['variation'] . ' pts';
+              ?>
+              <tr>
+                <td>&nbsp;&nbsp;<?= $sousSecteur['sous_secteur'] ?></td>
+                <td class="number"><?= $helper->formatNumber($sousSecteur['taux_croissance_precedent']) ?></td>
+                <td class="number"><?= $helper->formatNumber($sousSecteur['taux_croissance']) ?></td>
+                <td class="number"><span class="badge <?= $variationClass ?>"><?= $variationText ?></span></td>
+              </tr>
+            <?php
+            }
+          }
+        ?>
         </tbody>
       </table>
       <p style="font-size: 0.9rem; color: #666; margin-top: 1rem;"><em>Source : LF 2025, Tome 1</em></p>
@@ -422,47 +264,27 @@
       <h2>Secteurs Porteurs de la Croissance 2025</h2>
       
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
+        <?php
+        $colors = [
+          'Agriculture' => ['#388E3C', '#F1F8E9'],
+          'Industrie Extractive' => ['#1565C0', '#E3F2FD'],
+          'Tourisme' => ['#F57C00', '#FFF3E0'],
+          'Télécommunications' => ['#7B1FA2', '#F3E5F5']
+        ];
         
-        <div style="border-left: 5px solid #388E3C; padding: 1rem; background: #F1F8E9;">
-          <h3 style="color: #388E3C; margin-top: 0;">Agriculture : +9,5%</h3>
+        foreach ($secteursPorteurs as $secteur): 
+          $color = isset($colors[$secteur['secteur']]) ? $colors[$secteur['secteur']][0] : '#333333';
+          $bgColor = isset($colors[$secteur['secteur']]) ? $colors[$secteur['secteur']][1] : '#F5F5F5';
+        ?>
+        <div style="border-left: 5px solid <?= $color ?>; padding: 1rem; background: <?= $bgColor ?>;">
+          <h3 style="color: <?= $color ?>; margin-top: 0;"><?= $secteur['secteur'] ?> : <?= $helper->formatNumber($secteur['croissance']) ?>%</h3>
           <ul class="styled-list">
-            <li>Production de <strong>riz amélioré</strong> avec rendement > 8 tonnes/hectare</li>
-            <li>Distribution de semences hybrides</li>
-            <li>Mécanisation et modernisation (PFUMVUDZA)</li>
-            <li>Construction d'usines d'engrais locales</li>
+            <?php foreach ($secteur['points_cles'] as $point): ?>
+              <li><?= $point ?></li>
+            <?php endforeach; ?>
           </ul>
         </div>
-
-        <div style="border-left: 5px solid #1565C0; padding: 1rem; background: #E3F2FD;">
-          <h3 style="color: #1565C0; margin-top: 0;">Industrie Extractive : +4,0%</h3>
-          <ul class="styled-list">
-            <li>Demande accrue pour les <strong>énergies renouvelables</strong></li>
-            <li>Production de batteries pour véhicules électriques</li>
-            <li>Lancement de plusieurs projets miniers</li>
-            <li>Redevances minières : 331,2 Mds Ar (+290%)</li>
-          </ul>
-        </div>
-
-        <div style="border-left: 5px solid #F57C00; padding: 1rem; background: #FFF3E0;">
-          <h3 style="color: #F57C00; margin-top: 0;">Tourisme : +14,9%</h3>
-          <ul class="styled-list">
-            <li>Initiatives pour <strong>attirer davantage de touristes</strong></li>
-            <li>Développement des infrastructures hôtelières</li>
-            <li>Promotion du patrimoine naturel et culturel</li>
-            <li>Croissance soutenue du secteur hôtel-restaurant</li>
-          </ul>
-        </div>
-
-        <div style="border-left: 5px solid #7B1FA2; padding: 1rem; background: #F3E5F5;">
-          <h3 style="color: #7B1FA2; margin-top: 0;">Télécommunications : +13,7%</h3>
-          <ul class="styled-list">
-            <li>Développement des <strong>infrastructures numériques</strong></li>
-            <li>Extension de la couverture réseau</li>
-            <li>Digitalisation des services publics</li>
-            <li>Nouvelle taxe sur les transactions mobiles (TTM)</li>
-          </ul>
-        </div>
-
+        <?php endforeach; ?>
       </div>
     </section>
 
@@ -479,37 +301,19 @@
           </tr>
         </thead>
         <tbody>
+          <?php
+          $totalPostes = 0;
+          foreach ($postesBudgetaires as $poste):
+            $totalPostes += $poste['postes_autorises'];
+          ?>
           <tr>
-            <td>Ministère de l'Éducation Nationale</td>
-            <td class="number"><strong>3 000</strong></td>
+            <td><?= $poste['ministere'] ?></td>
+            <td class="number"><?= $poste['postes_autorises'] >= 1000 ? "<strong>" : "" ?><?= $helper->formatNumber($poste['postes_autorises']) ?><?= $poste['postes_autorises'] >= 1000 ? "</strong>" : "" ?></td>
           </tr>
-          <tr>
-            <td>Ministère des Forces Armées</td>
-            <td class="number"><strong>1 000</strong></td>
-          </tr>
-          <tr>
-            <td>Ministère de la Sécurité Publique</td>
-            <td class="number"><strong>1 000</strong></td>
-          </tr>
-          <tr>
-            <td>Ministère délégué en charge de la Gendarmerie Nationale</td>
-            <td class="number"><strong>1 000</strong></td>
-          </tr>
-          <tr>
-            <td>Ministère de la Santé Publique</td>
-            <td class="number">300</td>
-          </tr>
-          <tr>
-            <td>Ministère de l'Enseignement Technique et de la Formation Professionnelle</td>
-            <td class="number">250</td>
-          </tr>
-          <tr>
-            <td>Ministère de l'Enseignement Supérieur et de la Recherche Scientifique</td>
-            <td class="number">100</td>
-          </tr>
+          <?php endforeach; ?>
           <tr style="background: #FFF3E0; font-weight: bold;">
             <td><strong>TOTAL</strong></td>
-            <td class="number"><strong>6 650</strong></td>
+            <td class="number"><strong><?= $helper->formatNumber($totalPostes) ?></strong></td>
           </tr>
         </tbody>
       </table>
