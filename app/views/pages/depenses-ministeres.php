@@ -451,19 +451,19 @@ ob_start();
     <section class="card">
       <h2>Explorer les Autres Analyses des Dépenses</h2>
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1.5rem;">
-        <a href="depenses-nature.html" style="text-decoration: none;">
+  <a href="/depenses-nature" style="text-decoration: none;">
           <div style="border: 2px solid #1565C0; border-radius: 8px; padding: 1rem; text-align: center; background: #E3F2FD; transition: transform 0.3s;">
             <div style="font-weight: 600; color: #1565C0;">Par Nature Économique</div>
             <div style="font-size: 0.9rem; color: #666;">→ Voir le détail</div>
           </div>
         </a>
-        <a href="depenses-investissements.html" style="text-decoration: none;">
+  <a href="/depenses-investissements" style="text-decoration: none;">
           <div style="border: 2px solid #F57C00; border-radius: 8px; padding: 1rem; text-align: center; background: #FFF3E0; transition: transform 0.3s;">
             <div style="font-weight: 600; color: #F57C00;">Programmes d'Investissement</div>
             <div style="font-size: 0.9rem; color: #666;">→ Voir le détail</div>
           </div>
         </a>
-        <a href="depenses.html" style="text-decoration: none;">
+  <a href="/depenses" style="text-decoration: none;">
           <div style="border: 2px solid #388E3C; border-radius: 8px; padding: 1rem; text-align: center; background: #E8F5E9; transition: transform 0.3s;">
             <div style="font-weight: 600; color: #388E3C;">Vue d'Ensemble</div>
             <div style="font-size: 0.9rem; color: #666;">→ Retour</div>

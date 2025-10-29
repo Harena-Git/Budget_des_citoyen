@@ -231,19 +231,19 @@ ob_start();
     <section class="card">
       <h2>Explorer les Autres Catégories de Recettes</h2>
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1.5rem;">
-        <a href="recettes-fiscales.html" style="text-decoration: none;">
+  <a href="/recettes-fiscales" style="text-decoration: none;">
           <div style="border: 2px solid #1565C0; border-radius: 8px; padding: 1rem; text-align: center; background: #E3F2FD; transition: transform 0.3s;">
             <div style="font-weight: 600; color: #1565C0;">Recettes Fiscales</div>
             <div style="font-size: 0.9rem; color: #666;">→ Voir le détail</div>
           </div>
         </a>
-        <a href="recettes-douanes.html" style="text-decoration: none;">
+  <a href="/recettes-douanes" style="text-decoration: none;">
           <div style="border: 2px solid #388E3C; border-radius: 8px; padding: 1rem; text-align: center; background: #E8F5E9; transition: transform 0.3s;">
             <div style="font-weight: 600; color: #388E3C;">Recettes Douanières</div>
             <div style="font-size: 0.9rem; color: #666;">→ Voir le détail</div>
           </div>
         </a>
-        <a href="recettes-non-fiscales.html" style="text-decoration: none;">
+  <a href="/recettes-non-fiscales" style="text-decoration: none;">
           <div style="border: 2px solid #F57C00; border-radius: 8px; padding: 1rem; text-align: center; background: #FFF3E0; transition: transform 0.3s;">
             <div style="font-weight: 600; color: #F57C00;">Recettes Non Fiscales</div>
             <div style="font-size: 0.9rem; color: #666;">→ Voir le détail</div>

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Perspectives Économiques 2025 - Budget des Citoyens</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
   
@@ -19,11 +19,11 @@
   <!-- NAVIGATION -->
   <nav>
     <ul>
-      <li><a href="index.html">Accueil</a></li>
-      <li><a href="perspectives-economiques.html" class="active">Perspectives</a></li>
-      <li><a href="recettes.html">Recettes</a></li>
-      <li><a href="depenses.html">Dépenses</a></li>
-      <li><a href="deficit.html">Déficit</a></li>
+  <li><a href="/">Accueil</a></li>
+  <li><a href="/perspectives-economiques" class="active">Perspectives</a></li>
+  <li><a href="/recettes">Recettes</a></li>
+  <li><a href="/depenses">Dépenses</a></li>
+  <li><a href="/deficit">Déficit</a></li>
     </ul>
   </nav>
 

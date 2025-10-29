@@ -21,8 +21,8 @@ foreach ($categories as $key => $data) {
 
 // Début du contenu
 ob_start();
-    
-    <section class="card">
+?>
+  <section class="card">
       <h2>Recettes Totales de l'État 2025</h2>
       <p>Pour l'année 2025, le total des <strong>recettes et des dons</strong> s'élèvera à <span class="highlight">12 626,7 milliards d'Ariary</span>, soit une augmentation de <strong>31,8%</strong> par rapport à 2024. Cette progression résulte de réformes fiscales majeures, de l'élargissement de l'assiette fiscale et de l'optimisation de la collecte des recettes douanières.</p>
     </section>
@@ -187,7 +187,7 @@ ob_start();
       
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
         
-        <a href="recettes-fiscales.html" style="text-decoration: none;">
+  <a href="/recettes-fiscales" style="text-decoration: none;">
           <div style="border: 3px solid #1565C0; border-radius: 8px; padding: 1.5rem; background: #E3F2FD; transition: transform 0.3s;">
             <h3 style="color: #1565C0; margin-top: 0; display: flex; align-items: center; gap: 0.5rem;">
               Recettes Fiscales Intérieures
@@ -198,7 +198,7 @@ ob_start();
           </div>
         </a>
 
-        <a href="recettes-douanes.html" style="text-decoration: none;">
+  <a href="/recettes-douanes" style="text-decoration: none;">
           <div style="border: 3px solid #388E3C; border-radius: 8px; padding: 1.5rem; background: #E8F5E9; transition: transform 0.3s;">
             <h3 style="color: #388E3C; margin-top: 0; display: flex; align-items: center; gap: 0.5rem;">
               Recettes Douanières
@@ -209,7 +209,7 @@ ob_start();
           </div>
         </a>
 
-        <a href="recettes-non-fiscales.html" style="text-decoration: none;">
+  <a href="/recettes-non-fiscales" style="text-decoration: none;">
           <div style="border: 3px solid #F57C00; border-radius: 8px; padding: 1.5rem; background: #FFF3E0; transition: transform 0.3s;">
             <h3 style="color: #F57C00; margin-top: 0; display: flex; align-items: center; gap: 0.5rem;">
               Recettes Non Fiscales
@@ -220,7 +220,7 @@ ob_start();
           </div>
         </a>
 
-        <a href="recettes-dons.html" style="text-decoration: none;">
+  <a href="/recettes-dons" style="text-decoration: none;">
           <div style="border: 3px solid #7B1FA2; border-radius: 8px; padding: 1.5rem; background: #F3E5F5; transition: transform 0.3s;">
             <h3 style="color: #7B1FA2; margin-top: 0; display: flex; align-items: center; gap: 0.5rem;">
               Dons

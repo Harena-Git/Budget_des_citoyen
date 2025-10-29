@@ -16,6 +16,23 @@ if(file_exists(__DIR__. $ds . 'config.php') === false) {
 // This is important as it connects any static calls to the same $app object
 $app = Flight::app();
 
+// Normalize URLs: allow links using ".html" to work with the router
+// e.g. /recettes.html -> /recettes
+if (isset($_SERVER['REQUEST_URI'])) {
+	$originalUri = $_SERVER['REQUEST_URI'];
+	$parts = parse_url($originalUri);
+	$path = isset($parts['path']) ? $parts['path'] : '/';
+	if (substr($path, -5) === '.html') {
+		$newPath = substr($path, 0, -5);
+		if ($newPath === '') {
+			$newPath = '/';
+		}
+		$newUri = $newPath . (isset($parts['query']) ? '?' . $parts['query'] : '');
+		// Override the server URI so the router sees the normalized path
+		$_SERVER['REQUEST_URI'] = $newUri;
+	}
+}
+
 /*
  * Load the config file
  * P.S. When you require a php file and that file returns an array, the array

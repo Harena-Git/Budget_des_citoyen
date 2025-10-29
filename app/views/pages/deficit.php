@@ -59,7 +59,7 @@ ob_start();
       
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
         
-        <a href="deficit-situation.html" style="text-decoration: none;">
+  <a href="/deficit-situation" style="text-decoration: none;">
           <div style="border: 3px solid #1565C0; border-radius: 8px; padding: 1.5rem; background: #E3F2FD; transition: transform 0.3s;">
             <h3 style="color: #1565C0; margin-top: 0; display: flex; align-items: center; gap: 0.5rem;">
               Situation du Déficit
@@ -70,7 +70,7 @@ ob_start();
           </div>
         </a>
 
-        <a href="deficit-financement.html" style="text-decoration: none;">
+  <a href="/deficit-financement" style="text-decoration: none;">
           <div style="border: 3px solid #388E3C; border-radius: 8px; padding: 1.5rem; background: #E8F5E9; transition: transform 0.3s;">
             <h3 style="color: #388E3C; margin-top: 0; display: flex; align-items: center; gap: 0.5rem;">
               Financement du Déficit
