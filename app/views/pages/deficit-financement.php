@@ -277,13 +277,13 @@ ob_start();
     <section class="card">
       <h2>Explorer les Autres Aspects du Déficit</h2>
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1.5rem;">
-        <a href="deficit-situation.html" style="text-decoration: none;">
+  <a href="/deficit-situation" style="text-decoration: none;">
           <div style="border: 2px solid #1565C0; border-radius: 8px; padding: 1rem; text-align: center; background: #E3F2FD; transition: transform 0.3s;">
             <div style="font-weight: 600; color: #1565C0;">Situation du Déficit</div>
             <div style="font-size: 0.9rem; color: #666;">→ Voir le détail</div>
           </div>
         </a>
-        <a href="deficit.html" style="text-decoration: none;">
+  <a href="/deficit" style="text-decoration: none;">
           <div style="border: 2px solid #388E3C; border-radius: 8px; padding: 1rem; text-align: center; background: #E8F5E9; transition: transform 0.3s;">
             <div style="font-weight: 600; color: #388E3C;">Vue d'Ensemble</div>
             <div style="font-size: 0.9rem; color: #666;">→ Retour</div>
