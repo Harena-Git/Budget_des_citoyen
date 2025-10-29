@@ -33,32 +33,32 @@ if (!isset($helper)) {
       <div class="stats-grid">
         <div class="stat-box">
           <div class="label">Recettes + Dons</div>
-          <div class="value">12 963 Mds Ar</div>
+          <div class="value"><?= $helper->formatNumber($recettes_totales ?? ($situation['recettes_et_dons'] ?? 0)) ?> Mds Ar</div>
           <div class="change">Total disponible</div>
         </div>
         <div class="stat-box negative">
           <div class="label">Dépenses Totales</div>
-          <div class="value">16 305 Mds Ar</div>
+          <div class="value"><?= $helper->formatNumber($depenses_totales ?? ($situation['depenses_totales'] ?? 0)) ?> Mds Ar</div>
           <div class="change">Engagements de l'État</div>
         </div>
         <div class="stat-box negative">
           <div class="label">Déficit Budgétaire</div>
-          <div class="value">3 642 Mds Ar</div>
-          <div class="change">4,1% du PIB</div>
+          <div class="value"><?= $helper->formatNumber($deficit_total ?? ($situation['montant_deficit'] ?? 0)) ?> Mds Ar</div>
+          <div class="change"><?= isset($situation['deficit_pct']) ? ($situation['deficit_pct'] . '% du PIB') : '4,1% du PIB' ?></div>
         </div>
         <div class="stat-box">
           <div class="label">Financement Intérieur</div>
-          <div class="value">495 Mds Ar</div>
-          <div class="change">13,6% du déficit</div>
+          <div class="value"><?= $helper->formatNumber($total_interieur ?? ($financement_interieur ?? 0)) ?> Mds Ar</div>
+          <div class="change"><?= isset($total_interieur, $deficit_total) && $deficit_total > 0 ? round(($total_interieur/$deficit_total)*100,1) . '% du déficit' : '' ?></div>
         </div>
         <div class="stat-box">
           <div class="label">Financement Extérieur</div>
-          <div class="value">3 148 Mds Ar</div>
-          <div class="change">86,4% du déficit</div>
+          <div class="value"><?= $helper->formatNumber($total_exterieur ?? ($financement_exterieur ?? 0)) ?> Mds Ar</div>
+          <div class="change"><?= isset($total_exterieur, $deficit_total) && $deficit_total > 0 ? round(($total_exterieur/$deficit_total)*100,1) . '% du déficit' : '' ?></div>
         </div>
         <div class="stat-box">
           <div class="label">Solde Primaire</div>
-          <div class="value">1 098 Mds Ar</div>
+          <div class="value"><?= $helper->formatNumber($solde_primaire ?? ($situation['solde_primaire'] ?? 0)) ?> Mds Ar</div>
           <div class="change">Excédent hors dette</div>
         </div>
       </div>

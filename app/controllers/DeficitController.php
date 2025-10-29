@@ -33,9 +33,22 @@ class DeficitController {
             if ($donnees) {
                 // Prépare les données pour la vue
                 $viewHelper = new ViewHelper();
+                $situation = $donnees['situation'];
+                $financement = $donnees['financement'];
+
+                // Préparer des variables résumé pour les vues
+                $recettes_totales = $situation['recettes_totales'] ?? ($situation['recettes_et_dons'] ?? 0);
+                $depenses_totales = $situation['depenses_totales'] ?? ($situation['depenses'] ?? 0);
+                $montant_deficit = $situation['montant_deficit'] ?? ($situation['deficit'] ?? 0);
+                $solde_primaire = $situation['solde_primaire'] ?? ($situation['solde_primaire_mds'] ?? 0);
+
                 $data = [
-                    'situation' => $donnees['situation'],
-                    'financement' => $donnees['financement'],
+                    'situation' => $situation,
+                    'financement' => $financement,
+                    'recettes_totales' => $recettes_totales,
+                    'depenses_totales' => $depenses_totales,
+                    'deficit_total' => $montant_deficit,
+                    'solde_primaire' => $solde_primaire,
                     'helper' => $viewHelper
                 ];
 

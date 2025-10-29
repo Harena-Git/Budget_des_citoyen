@@ -37,7 +37,7 @@ if (!isset($helper)) {
         <div style="text-align: center;">
           <div style="background: linear-gradient(135deg, #1565C0 0%, #42A5F5 100%); color: white; padding: 2rem; border-radius: 8px; margin-bottom: 1rem;">
             <h3 style="margin: 0 0 1rem 0; font-size: 1.4rem;">RECETTES TOTALES ET DONS</h3>
-            <div style="font-size: 2rem; font-weight: bold;">12 962,7</div>
+            <div style="font-size: 2rem; font-weight: bold;"><?= $helper->formatNumber($situation_actuelle['recettes_totales'] ?? $situation_actuelle['recettes_et_dons'] ?? 0) ?></div>
             <div style="font-size: 1.2rem;">milliards d'Ariary</div>
           </div>
           <div style="background: #E3F2FD; padding: 1rem; border-radius: 8px;">
@@ -54,7 +54,7 @@ if (!isset($helper)) {
         <div style="text-align: center;">
           <div style="background: linear-gradient(135deg, #D32F2F 0%, #EF5350 100%); color: white; padding: 2rem; border-radius: 8px; margin-bottom: 1rem;">
             <h3 style="margin: 0 0 1rem 0; font-size: 1.4rem;">DÉPENSES TOTALES</h3>
-            <div style="font-size: 2rem; font-weight: bold;">16 304,9</div>
+            <div style="font-size: 2rem; font-weight: bold;"><?= $helper->formatNumber($situation_actuelle['depenses_totales'] ?? $situation_actuelle['depenses'] ?? 0) ?></div>
             <div style="font-size: 1.2rem;">milliards d'Ariary</div>
           </div>
           <div style="background: #FFEBEE; padding: 1rem; border-radius: 8px;">
@@ -72,10 +72,10 @@ if (!isset($helper)) {
 
       <!-- DÉFICIT -->
       <div style="text-align: center; margin: 2rem 0;">
-        <div style="background: linear-gradient(135deg, #F57C00 0%, #FFB74D 100%); color: white; padding: 2rem; border-radius: 8px; display: inline-block; min-width: 300px;">
+          <div style="background: linear-gradient(135deg, #F57C00 0%, #FFB74D 100%); color: white; padding: 2rem; border-radius: 8px; display: inline-block; min-width: 300px;">
           <h3 style="margin: 0 0 1rem 0; font-size: 1.4rem;">DÉFICIT BUDGÉTAIRE</h3>
-          <div style="font-size: 2.5rem; font-weight: bold;">3 642,2</div>
-          <div style="font-size: 1.3rem;">milliards d'Ariary (4,1% du PIB)</div>
+          <div style="font-size: 2.5rem; font-weight: bold;"><?= $helper->formatNumber($situation_actuelle['montant_deficit'] ?? 0) ?></div>
+          <div style="font-size: 1.3rem;">milliards d'Ariary (<?= $pourcentage_pib ?? ($situation_actuelle['deficit_pct'] ?? '4,1') ?>% du PIB)</div>
         </div>
       </div>
 

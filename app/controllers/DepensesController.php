@@ -44,11 +44,46 @@ class DepensesController {
 
             // Prépare les données pour la vue
             $viewHelper = new ViewHelper();
+
+            // Calculer des montants résumé par recherche de mots-clés dans les types
+            $investissements = 0;
+            $masse_salariale = 0;
+            $fonctionnement = 0;
+            $interets_dette = 0;
+
+            foreach ($depenses_par_nature as $d) {
+                $type = strtolower($d['type_depense'] ?? $d['type'] ?? '');
+                $montant = $d['total'] ?? $d['montant'] ?? 0;
+                if (strpos($type, 'invest') !== false || strpos($type, 'pip') !== false) {
+                    $investissements += $montant;
+                } elseif (strpos($type, 'masse') !== false || strpos($type, 'salaire') !== false) {
+                    $masse_salariale += $montant;
+                } elseif (strpos($type, 'biens') !== false || strpos($type, 'fonction') !== false) {
+                    $fonctionnement += $montant;
+                } elseif (strpos($type, 'dette') !== false || strpos($type, 'interet') !== false) {
+                    $interets_dette += $montant;
+                }
+            }
+
+            // Si details_dette contient montants, utiliser pour interets
+            if (is_array($details_dette) && count($details_dette) > 0) {
+                foreach ($details_dette as $dd) {
+                    if (isset($dd['interets'])) $interets_dette += $dd['interets'];
+                }
+            }
+
+            $part_investissement = ($total > 0) ? ($investissements / $total) * 100 : 0;
+
             $data = [
                 'total' => $total,
                 'depenses_par_nature' => $depenses_par_nature,
                 'details_dette' => $details_dette,
                 'variations' => $variations,
+                'investissements' => $investissements,
+                'masse_salariale' => $masse_salariale,
+                'fonctionnement' => $fonctionnement,
+                'interets_dette' => $interets_dette,
+                'part_investissement' => $part_investissement,
                 'helper' => $viewHelper
             ];
 
