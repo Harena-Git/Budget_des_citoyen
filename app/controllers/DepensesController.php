@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\helpers\ViewHelper;
 use app\models\Database;
 use app\models\DepensesModel;
 use flight\Engine;
@@ -42,11 +43,13 @@ class DepensesController {
             }
 
             // Prépare les données pour la vue
+            $viewHelper = new ViewHelper();
             $data = [
                 'total' => $total,
                 'depenses_par_nature' => $depenses_par_nature,
                 'details_dette' => $details_dette,
-                'variations' => $variations
+                'variations' => $variations,
+                'helper' => $viewHelper
             ];
 
             // Rend la vue avec les données
@@ -64,7 +67,8 @@ class DepensesController {
         try {
             $data = [
                 'depenses' => $this->depensesModel->getDepensesParNature(2025),
-                'dette' => $this->depensesModel->getDetailsDette(2025)
+                'dette' => $this->depensesModel->getDetailsDette(2025),
+                'helper' => new ViewHelper()
             ];
             $this->app->render('pages/depenses-nature', $data);
         } catch (\Exception $e) {
@@ -78,7 +82,7 @@ class DepensesController {
     public function ministeres() {
         try {
             $depenses = $this->depensesModel->getDepensesParMinistere(2025);
-            $this->app->render('pages/depenses-ministeres', ['depenses' => $depenses]);
+            $this->app->render('pages/depenses-ministeres', ['depenses' => $depenses, 'helper' => new ViewHelper()]);
         } catch (\Exception $e) {
             $this->app->render('pages/depenses-ministeres', ['error' => $e->getMessage()]);
         }
@@ -101,7 +105,8 @@ class DepensesController {
             }
 
             $this->app->render('pages/depenses-investissements', [
-                'projets' => $projets_par_categorie
+                'projets' => $projets_par_categorie,
+                'helper' => new ViewHelper()
             ]);
         } catch (\Exception $e) {
             $this->app->render('pages/depenses-investissements', ['error' => $e->getMessage()]);

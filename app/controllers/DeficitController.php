@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\helpers\ViewHelper;
 use app\models\Database;
 use app\models\DeficitModel;
 use flight\Engine;
@@ -31,9 +32,11 @@ class DeficitController {
             
             if ($donnees) {
                 // Prépare les données pour la vue
+                $viewHelper = new ViewHelper();
                 $data = [
                     'situation' => $donnees['situation'],
-                    'financement' => $donnees['financement']
+                    'financement' => $donnees['financement'],
+                    'helper' => $viewHelper
                 ];
 
                 // Rend la vue avec les données
@@ -60,6 +63,7 @@ class DeficitController {
                 'pourcentage_pib' => $this->deficitModel->getPourcentagePIB($situation['montant_deficit'])
             ];
 
+            $data['helper'] = new ViewHelper();
             $this->app->render('pages/deficit-situation', $data);
         } catch (\Exception $e) {
             $this->app->render('pages/deficit-situation', ['error' => $e->getMessage()]);
@@ -84,10 +88,12 @@ class DeficitController {
                 }
             }
 
+            $viewHelper = new ViewHelper();
             $data = [
                 'financement' => $financement,
                 'total_interieur' => $total_interieur,
-                'total_exterieur' => $total_exterieur
+                'total_exterieur' => $total_exterieur,
+                'helper' => $viewHelper
             ];
 
             $this->app->render('pages/deficit-financement', $data);
